@@ -46,6 +46,7 @@ def scrape_4096patterns():
     # 2^12パターンアクセスする
     for option1, option2, option3, option4, option5, option6, option7, option8, option9, option10, option11, option12 in combinations:
         browser.get(start_url)
+        print(str(num))
         time.sleep(1)
         element1 = '//*[@id="form1"]/p[1]/label[' + str(option1) + ']/input'
         element2 = '//*[@id="form1"]/p[2]/label[' + str(option2) + ']/input'
@@ -85,13 +86,14 @@ def scrape_4096patterns():
         btn12.click()
 
         browser.find_element_by_class_name('sbt_1').click()
+        time.sleep(1)
         type_name = browser.find_element_by_xpath('//*[@id="main"]/h2[4]').text
         
         df.loc[num] = [type_name[0:4], str(option1), str(option2), str(option3), str(option4), str(option5), str(option6), str(option7), str(option8), str(option9), str(option10), str(option11), str(option12)]
         
         num = num + 1
         
-        # For Debug 
+        ## For Debug 
         # if option10==2:
         #     break
 
@@ -140,7 +142,7 @@ def scrape_answers():
 
 if __name__ == "__main__":
     scrape_4096patterns()
-    time.sleep(1)
+    # time.sleep(1)
     # print("------DEBUG-------")
     # scrape_answers()
     print("------FINISH------")
