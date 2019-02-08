@@ -39,12 +39,13 @@ def scraping():
 
     for option1, option2, option3, option4, option5, option6, option7, option8, option9, option10, option11, option12 in combinations:
         binary_number = "0b" + str(option1-1) + str(option2-1) + str(option3-1) + str(option4-1) + str(option5-1) + str(option6-1) + str(option7-1) + str(option8-1) + str(option9-1)+ str(option10-1) + str(option11-1) + str(option12-1)
-        print("binaryu_number = " + binary_number)
         oct_num = str(int(binary_number, 2) + 1)
-        if oct_num == "300":
+        print("Scrape " + oct_num + ".html")
+        if oct_num == "10":
             break
-        soup = BeautifulSoup(open(oct_num + ".html"), "lxml")
-        type_name = soup.xpath(u'//*[@id="main"]/h2[4]')
+        soup = BeautifulSoup(open(oct_num + ".html"), "html.parser")
+        type_name = soup.h1.string
+        print(type_name[10:14])
         df.loc[int(oct_num)] = [type_name[0:4], str(option1), str(option2), str(option3), str(option4), str(option5), str(option6), str(option7), str(option8), str(option9), str(option10), str(option11), str(option12)]
     
     df.to_csv('16personalities.csv', index=False, mode='w', encoding='utf-8')
