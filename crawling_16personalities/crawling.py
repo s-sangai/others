@@ -155,45 +155,7 @@ def scrape_4096patterns():
     df.to_csv('16personalities.csv', index=False, mode='w', encoding='utf-8')
     browser.quit()
 
-def scrape_answers():
-    browser = webdriver.Chrome()
-    browser.get(start_url)
-    
-    q1a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[1]/label[1]')
-    q2a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[2]/label[1]')
-    q3a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[3]/label[1]')
-    q4a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[4]/label[1]')
-    q5a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[5]/label[1]')
-    q6a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[6]/label[1]')
-    q7a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[7]/label[1]')
-    q8a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[8]/label[1]')
-    q9a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[9]/label[1]')
-    q10a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[10]/label[1]')
-    q11a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[11]/label[1]')
-    q12a1 = browser.find_element_by_xpath('//*[@id="form1"]/p[12]/label[1]')
 
-    q1a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[1]/label[2]')
-    q2a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[2]/label[2]')
-    q3a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[3]/label[2]')
-    q4a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[4]/label[2]')
-    q5a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[5]/label[2]')
-    q6a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[6]/label[2]')
-    q7a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[7]/label[2]')
-    q8a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[8]/label[2]')
-    q9a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[9]/label[2]')
-    q10a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[10]/label[2]')
-    q11a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[11]/label[2]')
-    q12a2 = browser.find_element_by_xpath('//*[@id="form1"]/p[12]/label[2]')
-    
-    df = pd.DataFrame(columns=['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12'])
-    df1 = pd.Series([str(q1a1), str(q2a1), str(q3a1) ,str(q4a1) ,str(q5a1) ,str(q6a1) ,str(q7a1) ,str(q8a1) ,str(q9a1) ,str(q10a1) ,str(q11a1) ,str(q12a1)], index=df.columns)
-    df2 = pd.Series([str(q1a2), str(q2a2), str(q3a2) ,str(q4a2) ,str(q5a2) ,str(q6a2) ,str(q7a2) ,str(q8a2) ,str(q9a2) ,str(q10a2) ,str(q11a2) ,str(q12a2)], index=df.columns)
-    
-    df.append(df1, ignore_index=True)
-    df.append(df2, ignore_index=True)
-    
-    df.to_csv('personalities_Questions_list.csv', index=False, mode='w', encoding='utf-8')
-    browser.quit()
 
 if __name__ == "__main__":
     scrape_4096patterns()
